@@ -1,1 +1,1 @@
-# Earthquake-analysis-in-Japan
+# Earthquake-Analysis-In-Japan
