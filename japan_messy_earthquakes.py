@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 #خواندن فایل csv 
 data_f = pd.read_csv("japan_messy_earthquakes.csv")
 print(data_f.head())
@@ -17,7 +18,7 @@ print(data_f.isna().sum())
 print(data_f[(data_f['depth_m']<0) | (data_f['depth_m']>1000)])
 print(data_f[(data_f['mag']<0) | (data_f['mag']>10)])
 #ردیف های گمشده را باید حذف کنیم که اشتباه نشه
-data_f = data_f.dropna(subset=['latitude' , 'longituse' , 'mag'])
+data_f = data_f.dropna(subset=['latitude' , 'longitude' , 'mag'])
 #برای ردیف عمق غیر منطقی
 data_f.loc[(data_f['depth_m']<0) | (data_f['depth_m']>1000) , 'depth_m'] = np.nan
 data_f = data_f.sort_values('time').reset_index(drop=True)
@@ -27,3 +28,17 @@ quakes = data_f[data_f['mag']>5.0]
 #زلزله کم عمق
 shallow_q = data_f[data_f['depth_m']<70]
 #گروه بندی کردن بر اساس مکان و ماه
+#گروه بندی بر اساس محل وقوع زلزله
+mag_place = data_f.groupby('place')['mag'].mean()
+#زلزله در هر ماه
+data_f['month'] = data_f['time'].dt.month
+quakes_per_month = data_f.groupby('month').size()
+data_f[data_f['quality_flag'].notna()]
+
+#اندازه زلزله بر اساس تاریخ
+plt.figure(figsize=(10,5))
+plt.plot(data_f['time'] , data_f['mag'] , marker = 'o' , linestyle = 'None')
+plt.xlabel('Date')
+plt.ylabel('Magnitude')
+plt.title('*Earthquake Magnitude Over Time*')
+plt.show()
