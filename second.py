@@ -40,7 +40,7 @@ for result in index:
         finall = f"{mag},{city},{time_e},{time_e_h},{location},{depth}"
         final_index.append(finall)
 
-with open ("GEOFON.csv","w",encoding="utf-8") as f :
+with open ("JAPAN_GEOFON.csv","w",encoding="utf-8") as f :
         for i in final_index :
                 f.write(i)
                 f.write("\n")
