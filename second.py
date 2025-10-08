@@ -24,6 +24,7 @@ for result in index:
         mag = result.find('span', class_='magbox').text
         mag = mag.strip()
         city = result.find('strong').text
+        city = city.split(",")[0]
         times = result.find_all('div', class_='col-xs-12')[1]
         time = times.get_text("",strip=True)
         patern =r"\d{4}-\d{2}-\d{2}"
