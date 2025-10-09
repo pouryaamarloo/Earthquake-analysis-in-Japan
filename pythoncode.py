@@ -24,4 +24,3 @@ def re_category(c):
         return "motevaset"
     elif 6<c:
         return "shadid"
-    
