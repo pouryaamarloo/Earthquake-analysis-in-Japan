@@ -1,16 +1,16 @@
 import pandas as pd 
 
 #reading file you send to this
-df=pd.read_CSV("JAPAN_GEOFON.csv", header=None)
+df=pd.read_csv("JAPAN_GEOFON.csv", header=None)
 
 #cut data(,)
-df=df[0].str.spilit(',' , expand=True)
-
+print(df.columns)
 #colums name
-df.columns = ['Magnitude' , 'location' , 'data' , 'time' , 'Longitude' , 'Latitude' , 'Depth'] 
+# df.columns = ['Magnitude' , 'location' , 'data' , 'time' , 'Longitude' , 'Latitude' , 'Depth']
+df = df[[0, 1, 2, 3, 4, 5, 6]].rename(columns={0:'Magnitude', 1:'location', 2:'Date',3:'Time',4:'Longitude',5:'Latitude',6:'Depth'})
 
-#cleaning data
-# first step cleaning data and del extra Character
+# #cleaning data
+# # first step cleaning data and del extra Character
 df['Longitude'] = df['Longitude'].str.replace('°E', '', regex=False)
 df['Latitude'] = df['Latitude'].str.replace('°N', '', regex=False)
 
@@ -37,5 +37,5 @@ df = df.dropna(subset=['Datetime'])
 #
 df.to_csv("JAPAN_GEOFON_cleaned.csv", index=False)
 
-print("✅ داده‌ها با موفقیت تمیز و در فایل JAPAN_GEOFON_cleaned.csv ذخیره شدند!")
+print(" داده‌ها با موفقیت تمیز و در فایل JAPAN_GEOFON_cleaned.csv ذخیره شدند!")
 print(df.head())
