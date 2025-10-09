@@ -46,3 +46,10 @@ group_2 = data_f.groupby('region').agg(
     max_depth = ('depth_m' , 'max')
     )
 print(group_2)
+
+plt.figure(figsize = (10 , 5))
+plt.bar(group_2.index , group_2['quake_count'])
+plt.xlabel(rotation = 45 , ha = 'right')
+plt.ylabel('Region')
+plt.title('Number of Earthquakes')
+plt.show()
