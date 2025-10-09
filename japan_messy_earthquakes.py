@@ -14,9 +14,10 @@ data_f['mag'] = pd.to_numeric(data_f['mag'] , errors='coerce')  #mag -> float
 
 #بررسی داده های گمشده
 #تعداد داده های گمشده در هر ستون
-print(data_f.isna().sum())
 #ردیف های گمشده را باید حذف کنیم که اشتباه نشه
 data_f = data_f.dropna(subset=['latitude' , 'longitude' , 'mag'])
+data_f['depth_m'] = data_f['depth_m'].fillna(data_f['depth_m'].mean())
+print(data_f.isna().sum())
 #زلزله در هر ماه
 data_f['Month'] = data_f['time'].dt.month
 #ساخت ستون category
@@ -29,12 +30,12 @@ def category(i) : #i=شدت زلزله
         return "Strong"
 
 data_f['Category'] = data_f['mag'].apply(category)
-
+#استخراج ستون جدید region از place
 data_f['region'] = data_f['place'].astype(str).apply(lambda x : x.split(',')[0].strip())
 #گروهبندی بر اساس ماه و category
 group_1 = data_f.groupby(['Month' , 'Category']).agg(
         count = ('mag' , 'size') ,
-        meangin_mag = ('mag' , 'mean') 
+        mean_mag = ('mag' , 'mean') 
     )
 print(group_1)
 #گروهبندی بر اساس منطقه
@@ -47,9 +48,9 @@ group_2 = data_f.groupby('region').agg(
     )
 print(group_2)
 
-plt.figure(figsize = (10 , 5))
+plt.figure(figsize = (12 , 6))
 plt.bar(group_2.index , group_2['quake_count'])
-plt.xlabel(rotation = 45 , ha = 'right')
+plt.xticks(rotation = 45 , ha = 'right')
 plt.xlabel('Region')
 plt.ylabel('Number of Earthquakes')
 plt.title('Number of Earthquakes by Region')

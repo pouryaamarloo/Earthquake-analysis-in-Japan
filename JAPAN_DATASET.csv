@@ -1,4 +1,4 @@
-time,latitude,longitude,depth,mag,place,status,notes
+time,latitude,longitude,depth_m,mag,place,status,notes
 2025-09-15T12:45:30.123Z,38.322,142.369,35.0,5.1,off east coast of Honshu, Japan,reviewed,
 2025-09-16T08:22:05.456Z,36.2048,138.2529,,,near Nagano, Japan,automatic,Minor shock
 2025-09-17T14:10:05.000Z,43.0618,141.3545,10.2,4.8,Hokkaido, Japan region,reviewed,
