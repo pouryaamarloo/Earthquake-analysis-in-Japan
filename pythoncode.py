@@ -13,7 +13,7 @@ df["mounth"]=df["time"].dt.month
 digit_column_list=["latitude" ,"longitude","depth","mag","nst","gap","dmin","rms","horizontalError","depthError","magError","magNst"]
 for i in digit_column_list:
     if i in df.columns:
-        df[i]=pd.to.numeric(df[i],errors='coerce')
+        df[i]=pd.to_numeric(df[i],errors='coerce')
 df=df.dropna()
 
 #تابع شدت زلزله
