@@ -18,11 +18,11 @@ print(data_f.isna().sum())
 #ردیف های گمشده را باید حذف کنیم که اشتباه نشه
 data_f = data_f.dropna(subset=['latitude' , 'longitude' , 'mag'])
 #زلزله در هر ماه
-data_f['month'] = data_f['time'].dt.month
+data_f['Month'] = data_f['time'].dt.month
 #ساخت ستون category
 def category(i) : #i=شدت زلزله 
     if i < 4 :
-        return "Week"
+        return "Weak"
     elif 4<= i <= 6 :
         return "Moderate"
     elif i > 6 :
@@ -40,8 +40,8 @@ print(group_1)
 #گروهبندی بر اساس منطقه
 group_2 = data_f.groupby('region').agg(
     quake_count = ('mag' , 'size') ,
-    meangin_mag = ('mag' , 'mean') ,
-    meangin_depth = ('depth_m' , 'mean') ,
+    mean_mag = ('mag' , 'mean') ,
+    mean_depth = ('depth_m' , 'mean') ,
     max_mag = ('mag' , 'max') ,
     max_depth = ('depth_m' , 'max')
     )
@@ -50,6 +50,7 @@ print(group_2)
 plt.figure(figsize = (10 , 5))
 plt.bar(group_2.index , group_2['quake_count'])
 plt.xlabel(rotation = 45 , ha = 'right')
-plt.ylabel('Region')
-plt.title('Number of Earthquakes')
+plt.xlabel('Region')
+plt.ylabel('Number of Earthquakes')
+plt.title('Number of Earthquakes by Region')
 plt.show()
