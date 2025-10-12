@@ -112,7 +112,7 @@ print("Standard deviation of distance :", np.std(data_f['distance_to_tokyo']))
 print("Variance of distance :", np.var(data_f['distance_to_tokyo']))
 
 # ذخیره تغییرات
-data_f.to_csv("JAPAN_DATASET.csv", index=False)
+data_f.to_csv("JAPAN_DATASETT.csv", index=False)
 print("JAPAN_DATASET file saved with new changes!")
 
 # استخراج ماه
