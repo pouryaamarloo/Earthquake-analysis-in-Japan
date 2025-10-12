@@ -12,7 +12,6 @@ df = df[[0, 1, 2, 3, 4, 5, 6]].rename(columns={
     5: 'latitude',
     6: 'depth'
 })
-
 # پاکسازی داده‌ها (حذف °E و °N)
 df['longitude'] = df['longitude'].str.replace('°E', '', regex=False)
 df['latitude'] = df['latitude'].str.replace('°N', '', regex=False)
