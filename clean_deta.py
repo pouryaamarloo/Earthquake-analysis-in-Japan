@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 df = pd.read_csv("JAPAN_GEOFON.csv", header=None)
 
 df = df[[0, 1, 2, 3, 4, 5, 6]].rename(columns={
@@ -71,6 +72,20 @@ max_mag_or_depth = df.groupby("region")[["mag", "depth"]].max().reset_index()
 count_region.plot(kind='bar', x='region', y='count')
 plt.savefig("jpg/JAPAN_GEOFON_cleaned.png",bbox_inches='tight')
 plt.show()
+
+tokyo_latitude = 35.6895
+tokyo_longitude = 139.6917
+
+# فاصله تا توکیو (درجه جغرافیایی)
+df['distance_to_tokyo'] = np.sqrt(
+    (df['latitude'] - tokyo_latitude) ** 2 +
+    (df['longitude'] - tokyo_longitude) ** 2
+)
+
+# محاسبات آماری
+print("Mean of distance :", np.mean(df['distance_to_tokyo']))
+print("Standard deviation of distance :", np.std(df['distance_to_tokyo']))
+print("Variance of distance :", np.var(df['distance_to_tokyo']))
 print(df)
 print("\nمیانگین بزرگی بر اساس ماه و دسته:\n", mag_mean)
 print("\nتعداد زلزله‌ها بر اساس ماه و دسته:\n", count_month)
