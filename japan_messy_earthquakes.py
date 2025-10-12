@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from datetime import datetime  # اضافه: از datetime import datetime
+from datetime import datetime
 
 # خواندن فایل csv
 data_f = pd.read_csv("JAPAN_DATASET.csv")
@@ -17,13 +17,13 @@ def change_time(c):
         "%Y-%m-%dT%H:%M:%S.%fZ",
         "%Y-%m-%dT%H:%M:%S.%f%z",
         "%Y-%m-%dT%H:%M:%S.%f",
-        "%Y-%m-%dT%H:%M:%S.Z",  # برای .Z
+        "%Y-%m-%dT%H:%M:%S.Z",
         "%Y-%m-%dT%H:%M:%SZ",
         "%Y-%m-%dT%H:%M:%S",
         "%b %d, %Y, %H:%M:%S",
         "%b %d, %Y, %I:%M:%S %p",
         "%b %d, %Y, %H:%M:%S",
-        "%Y-%m-%d %I:%M %p",  # کلیدی: بدون %S
+        "%Y-%m-%d %I:%M %p",
         "%d/%m/%Y %H:%M:%S",
         "%m/%d/%Y %H:%M:%S",
         "%b %d %Y %H:%M:%S",
@@ -33,9 +33,9 @@ def change_time(c):
         try:
             x = datetime.strptime(c, fmt)
             return x
-        except ValueError:  # دقیق‌تر
+        except ValueError:
             continue
-    print(f"Failed: {c}")  # فقط اگر fail بشه
+    print(f"Failed: {c}")
     return pd.NaT
 
 # مرحله ۳: اعمال تابع
