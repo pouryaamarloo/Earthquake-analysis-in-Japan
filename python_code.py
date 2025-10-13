@@ -1,0 +1,83 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#خواندن فایل csv:
+df=pd.read_csv("data/japan_earthquakes.csv")
+print(df.shape)
+print(df.columns)
+#تبدیل ستون تاریخ به datetime:
+df["time"] = pd.to_datetime(df["time"],errors="coerce")
+
+df["year"] = df["time"].dt.year
+df["month"] = df["time"].dt.month
+#تبدیل ستون های عددی به float:
+digit_column_list=["latitude" ,"longitude","depth","mag","nst","gap","dmin","rms","horizontalError","depthError","magError","magNst"]
+for i in digit_column_list:
+    if i in df.columns:
+        df[i]=pd.to_numeric(df[i],errors='coerce')
+df=df.dropna()
+
+#تابع شدت زلزله
+def req_category(c):
+    if c<4:
+        return "zaeif"
+    elif 4<=c<6:
+        return "motevaset"
+    elif 6<=c:
+        return "shadid"
+
+df["Category"] = df["mag"].apply(req_category)
+
+#کتگوری زلزله بر اساس ماه 
+mc_group= df.groupby(['month', 'Category'])
+
+mag_mean= mc_group['mag'].mean()
+
+count_mc=mc_group.size()
+
+table = pd.DataFrame({
+    "Mag_mean": mag_mean,
+    "Count": count_mc
+}).reset_index()
+
+#استخراج نام مخل از ستون place
+
+df["region"]=df["place"].str.extract(r'of(.*?),')
+# گروه‌بندی بر اساس region
+
+region_group = df.groupby("region")
+# شمارش تعداد زلزله در هر منطقه
+
+count_region = region_group.size().reset_index()
+#  محاسبه میانگین بزرگی mag در هر منطقه
+#محاسبه ی میانگین عمق در هر منطقه (depth)
+
+mean_mag_region = region_group[["mag" , "depth"]].mean().reset_index()
+# محاسبه بیشترین بزرگی یا عمق در هر منطقه
+
+max_mag_or_depth =region_group[["mag", "depth"]].max().reset_index()
+#رسم نمودار میله ای 
+count_region.plot(kind="bar")
+plt.title("count_region")
+plt.xlabel("count")
+plt.ylabel("region")
+plt.show()
+#محاسبه ی distance to tokyo
+x1=df["latitude"]
+y1=df["longitude"]
+x2=35.6581
+y2=139.7414
+dist=df["distance_to_tokyo"]
+dist=np.sqrt((x2-x1)**2+(y2-y1)**2)
+#محاسبات آماری روی آرایه ها
+dist_mean=np.mean(dist)
+dist_var=np.var(dist)
+dist_std=np.std(dist)
+#percentile
+dist_percentile_1=np.percentile(dist , 25)
+dist_percentile_2=np.percentile(dist , 50)
+dist_percentile_3=np.percentile(dist , 75)
+
+
+
