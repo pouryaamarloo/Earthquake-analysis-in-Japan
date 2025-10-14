@@ -96,25 +96,6 @@ data_f = data_f.dropna(subset=['latitude', 'longitude', 'mag'])
 data_f['depth'] = data_f['depth'].fillna(data_f['depth'].mean())
 print(data_f.isna().sum())
 
-# مختصات توکیو
-tokyo_latitude = 35.6895
-tokyo_longitude = 139.6917
-
-# فاصله تا توکیو (درجه جغرافیایی)
-data_f['distance_to_tokyo'] = np.sqrt(
-    (data_f['latitude'] - tokyo_latitude) ** 2 +
-    (data_f['longitude'] - tokyo_longitude) ** 2
-)
-
-# محاسبات آماری
-print("Mean of distance :", np.mean(data_f['distance_to_tokyo']))
-print("Standard deviation of distance :", np.std(data_f['distance_to_tokyo']))
-print("Variance of distance :", np.var(data_f['distance_to_tokyo']))
-
-# ذخیره تغییرات
-data_f.to_csv("JAPAN_DATASET.csv", index=False)
-print("JAPAN_DATASET file saved with new changes!")
-
 # استخراج ماه
 data_f['Month'] = data_f['time'].dt.month
 
@@ -161,3 +142,24 @@ if 'region' in data_f.columns:
     plt.ylabel('Number of Earthquakes')
     plt.title('Number of Earthquakes by Region')
     plt.show()
+
+# مختصات توکیو
+tokyo_latitude = 35.6895
+tokyo_longitude = 139.6917
+
+# فاصله تا توکیو (درجه جغرافیایی)
+data_f['distance_to_tokyo'] = np.sqrt(
+    (data_f['latitude'] - tokyo_latitude) ** 2 +
+    (data_f['longitude'] - tokyo_longitude) ** 2
+)
+
+#استخراج آرایه فاصله
+distance = data_f['distance_to_tokyo']
+# محاسبات آماری
+distance_mean = np.mean(distance)
+distance_variance = np.var(distance)
+distance_standard_deviation = np.std(distance)
+#محاسبات آماری قسمت صدک(percentile)
+dist_percentile_1 = np.percentile(distance , 25)
+dist_percentile_2 = np.percentile(distance , 50)
+dist_percentile_3 = np.percentile(distance , 75)
