@@ -143,6 +143,7 @@ if 'region' in data_f.columns:
     plt.title('Number of Earthquakes by Region')
     plt.show()
 
+
 # مختصات توکیو
 tokyo_latitude = 35.6895
 tokyo_longitude = 139.6917
