@@ -164,3 +164,5 @@ distance_standard_deviation = np.std(distance)
 dist_percentile_1 = np.percentile(distance , 25)
 dist_percentile_2 = np.percentile(distance , 50)
 dist_percentile_3 = np.percentile(distance , 75)
+
+#مصورسازی نمودارها
