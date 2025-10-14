@@ -51,7 +51,7 @@ df["region"]= df["place"].str.extract(r'of\s*([^,]+)')[0]
 df.loc[df["region"].isna(), "region"]= df["place"].str.extract(r'^\s*([^,]+)')[0]
 
 df["region"]=df["region"].fillna("unknown").str.strip()
-print(df["region"])
+
 # گروه‌بندی بر اساس region
 
 region_group = df.groupby("region")
@@ -66,10 +66,10 @@ mean_mag_region = region_group[["mag" , "depth"]].mean().reset_index()
 
 max_mag_or_depth =region_group[["mag", "depth"]].max().reset_index()
 #رسم نمودار میله ای 
-count_region.plot(kind="bar")
-plt.title("count_region")
-plt.xlabel("count")
-plt.ylabel("region")
+count_region.plot(kind="bar", x="region" , y="count_region")
+plt.title("count of earthquakes by region")
+plt.xlabel("Region")
+plt.ylabel("Count")
 plt.show()
 #محاسبه ی distance to tokyo
 x1=df["latitude"]
