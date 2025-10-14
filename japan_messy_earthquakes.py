@@ -67,15 +67,27 @@ def number(c):
         return c
     if isinstance(c, str):
         c = c.strip().lower()
+        if 'point' in c:
+            c =c.replace('point',".")
         if c.replace(".","",1).isdigit():
             return c
         if "." in c:
             c =c.split(".")
+            index = []
+            for i in c :
+                if " " in i:
+                    i = i.replace(" ","")
+                    index.append(i)
+                else :
+                    index = c
+
+
             if len(c) != 2:
                 return pd.NaT
             try :
-                first = num[c[0]]
-                second = num[c[1]]
+
+                first = num[index[0]]
+                second = num[index[1]]
                 return  float(f"{first}.{second}")
             except :
                 return pd.NaT
