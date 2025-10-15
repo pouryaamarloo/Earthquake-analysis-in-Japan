@@ -48,7 +48,14 @@ df = df.sort_values(by='Datetime')
 # ذخیره فایل تمیزشده
 df.drop(columns=['Datetime'], inplace=True)
 df["region"] = df["place"]
+tokyo_latitude = 35.6895
+tokyo_longitude = 139.6917
 
+# فاصله تا توکیو (درجه جغرافیایی)
+df['distance_to_tokyo'] = np.sqrt(
+    (df['latitude'] - tokyo_latitude) ** 2 +
+    (df['longitude'] - tokyo_longitude) ** 2
+)
 
 
 df.to_csv("JAPAN_GEOFON_cleaned.csv", index=False)
@@ -74,14 +81,7 @@ count_region.plot(kind='bar', x='region', y='count')
 plt.savefig("jpg/JAPAN_GEOFON_cleaned.png",bbox_inches='tight')
 plt.show()
 
-tokyo_latitude = 35.6895
-tokyo_longitude = 139.6917
 
-# فاصله تا توکیو (درجه جغرافیایی)
-df['distance_to_tokyo'] = np.sqrt(
-    (df['latitude'] - tokyo_latitude) ** 2 +
-    (df['longitude'] - tokyo_longitude) ** 2
-)
 
 # محاسبات آماری
 print("Mean of distance :", np.mean(df['distance_to_tokyo']))
