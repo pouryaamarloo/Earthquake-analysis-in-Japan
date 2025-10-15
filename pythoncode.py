@@ -66,7 +66,7 @@ mean_mag_region = region_group[["mag" , "depth"]].mean().reset_index()
 
 max_mag_or_depth =region_group[["mag", "depth"]].max().reset_index()
 #رسم نمودار میله ای 
-count_region.plot(kind="bar", x="region" , y="count_region")
+count_region.plot(kind="bar",figsize=(10,5), x="region" , y="count_region")
 plt.title("count of earthquakes by region")
 plt.xlabel("Region")
 plt.ylabel("Count")
@@ -88,8 +88,12 @@ dist_percentile_1=np.percentile(dist , 25)
 dist_percentile_2=np.percentile(dist , 50)
 dist_percentile_3=np.percentile(dist , 75)
 # ذخیره نتایج در فایل جدید
+df.to_csv("data/japan_earthquakes_full.csv", index=False)
+
 processed_columns= ["time","latitude","longitude","depth","mag","Category","region","month","year","distance_to_tokyo"]
 df[processed_columns].to_csv("data/japan_earthquakes_processed.csv", index=False, encoding="utf-8-sig")
 
-
+test_df=pd.read_csv("data/japan_earthquakes_processed.csv")
+print(test_df.head())
+print(test_df.info())
 
