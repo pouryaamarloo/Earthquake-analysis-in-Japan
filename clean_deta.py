@@ -47,6 +47,9 @@ df = df.sort_values(by='Datetime')
 
 # ذخیره فایل تمیزشده
 df.drop(columns=['Datetime'], inplace=True)
+df["region"] = df["place"]
+
+
 
 df.to_csv("JAPAN_GEOFON_cleaned.csv", index=False)
 
@@ -56,7 +59,6 @@ mag_mean = month_grouped['mag'].mean()
 count_month = month_grouped.size()
 # ایجاد ستون regionبرای تشخیص منطقه زلزله زده
 
-df["region"] = df["place"]
 region_group = df.groupby("region")
 
 # شمارش تعداد زلزله در هر منطقه
