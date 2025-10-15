@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 # خواندن فایل csv
-data_f = pd.read_csv("JAPAN_DATASET.csv")
+data_f = pd.read_csv("japan_messy_earthquakes.csv")
 
 # نمایش اطلاعات اولیه
 print(data_f.shape)
@@ -116,7 +116,7 @@ if 'place' in data_f.columns:
 else:
     print(" ستون 'place' در فایل وجود ندارد!")
 
-# گروه‌بندی‌ها
+#گروه‌بندی‌ها
 
 group_1 = data_f.groupby(['Month', 'Category']).agg(
     count=('mag', 'size'),
@@ -135,7 +135,7 @@ if 'region' in data_f.columns:
     print(group_2)
 
     # نمودار
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(10, 5))
     plt.bar(group_2.index, group_2['quake_count'])
     plt.xticks(rotation=45, ha='right')
     plt.xlabel('Region')
@@ -164,5 +164,9 @@ distance_standard_deviation = np.std(distance)
 dist_percentile_1 = np.percentile(distance , 25)
 dist_percentile_2 = np.percentile(distance , 50)
 dist_percentile_3 = np.percentile(distance , 75)
+
+# ذخیره نتایج در فایل جدید
+processed_columns= ["time","latitude","longitude","depth","mag","Category","region","distance_to_tokyo"]
+data_f[processed_columns].to_csv("JAPAN_DATASETT.csv", index=False, encoding="utf-8-sig")
 
 #مصورسازی نمودارها
