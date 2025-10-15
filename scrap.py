@@ -7,8 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from datetime import datetime, timedelta
 import time, os, glob
-
-download_path = os.path.join(os.getcwd(), "downloads")
+#ایمپورت کردن کتابخانه ها 
+download_path = os.path.join(os.getcwd(), "downloads")#ساختن فایلی که دیتا به ان منتقل میشود
 os.makedirs(download_path, exist_ok=True)
 
 options = Options()
@@ -21,11 +21,11 @@ options.add_experimental_option("prefs", {
     "safebrowsing.disable_download_protection": True
 })
 
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
-driver.get("https://www.emsc-csem.org/Earthquake/")
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)#باز کردن کروم
+driver.get("https://www.emsc-csem.org/Earthquake/")#باز کردن سایت
 
-today = datetime.today().strftime("%Y-%m-%d")
-one_month_ago = (datetime.today() - timedelta(days=30)).strftime("%Y-%m-%d")
+today = datetime.today().strftime("%Y-%m-%d")#گرفتن تایم امروز
+one_month_ago = (datetime.today() - timedelta(days=30)).strftime("%Y-%m-%d")#کرفتن تایم 30 روز پیش
 
 try:
     driver.execute_script("document.getElementById('datemin').value = arguments[0];", one_month_ago)
@@ -38,7 +38,7 @@ try:
         "OFF COAST OF HOKKAIDO, JAPAN|OFF EAST COAST OF HONSHU, JAPAN|"
         "RYUKYU ISLANDS, JAPAN|SEA OF JAPAN|SHIKOKU, JAPAN|SOUTHEAST OF SHIKOKU, JAPAN|"
         "SOUTHWESTERN RYUKYU ISL., JAPAN|VOLCANO ISLANDS, JAPAN REGION|WESTERN HONSHU, JAPAN"
-    )
+    )#وارد کردن ریجن 
     region_input = driver.find_element(By.ID, "reg")
     region_input.clear()
     region_input.send_keys(regions)

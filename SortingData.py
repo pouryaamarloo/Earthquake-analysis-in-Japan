@@ -1,8 +1,9 @@
 import pandas as pd
-import numpy as np
 
 file_path = r"C:\Users\pro\Documents\python\Earthquake-analysis-in-Japan\downloads\export_EMSC.csv"
-output_path = r"C:\Users\pro\Documents\python\Earthquake-analysis-in-Japan\downloads\export_EMSC_final.xlsx"
+output_clean = r"C:\Users\pro\Documents\python\Earthquake-analysis-in-Japan\downloads\export_EMSC_clean.csv"
+output_month_cat = r"C:\Users\pro\Documents\python\Earthquake-analysis-in-Japan\downloads\export_EMSC_month_cat.csv"
+output_region = r"C:\Users\pro\Documents\python\Earthquake-analysis-in-Japan\downloads\export_EMSC_region.csv"
 
 # خواندن CSV با جداکننده ;
 df = pd.read_csv(file_path, sep=';')
@@ -28,10 +29,7 @@ df.dropna(subset=['datetime', 'magnitude'], inplace=True)
 df = df[['datetime', 'latitude', 'longitude', 'depth', 'magnitude', 'place']]
 
 # تبدیل ستون‌های عددی به float
-df['latitude'] = df['latitude'].astype(float)
-df['longitude'] = df['longitude'].astype(float)
-df['depth'] = df['depth'].astype(float)
-df['magnitude'] = df['magnitude'].astype(float)
+df[['latitude','longitude','depth','magnitude']] = df[['latitude','longitude','depth','magnitude']].astype(float)
 
 # ساخت ستون Month
 df['Month'] = df['datetime'].dt.month
@@ -48,7 +46,6 @@ def categorize(mag):
 df['Category'] = df['magnitude'].apply(categorize)
 
 # استخراج منطقه از ستون place
-# ساده‌ترین روش: جدا کردن بر اساس کاما و گرفتن اولین بخش
 df['region'] = df['place'].apply(lambda x: str(x).split(',')[0].strip())
 
 # گروه‌بندی بر اساس Month و Category
@@ -67,8 +64,7 @@ grouped_region = df.groupby('region').agg(
     max_magnitude=('magnitude', 'max')
 ).reset_index()
 
-# ذخیره به Excel با دو شیت: داده تمیز و آماری
-with pd.ExcelWriter(output_path) as writer:
-    df.to_excel(writer, sheet_name='Cleaned_Data', index=False)
-    grouped_month_cat.to_excel(writer, sheet_name='Monthly_Category', index=False)
-    grouped_region.to_excel(writer, sheet_name='Region_Stats', index=False)
+# ذخیره CSV با جداکننده کاما و encoding مناسب برای Excel
+df.to_csv(output_clean, index=False, sep=',', encoding='utf-8-sig')
+grouped_month_cat.to_csv(output_month_cat, index=False, sep=',', encoding='utf-8-sig')
+grouped_region.to_csv(output_region, index=False, sep=',', encoding='utf-8-sig')
