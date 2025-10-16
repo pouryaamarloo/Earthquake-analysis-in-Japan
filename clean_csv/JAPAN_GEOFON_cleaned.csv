@@ -1,27 +1,27 @@
-mag,place,date,time,longitude,latitude,depth,Month,Category,region,distance_to_tokyo
-5.0,Ryukyu Islands,2025-09-17,12:55:07.3,129.71,29.6,33.0,9,motevaset,Ryukyu Islands,11.692576497077102
-4.6,Ryukyu Islands,2025-09-17,13:00:34.7,129.93,29.42,52.0,9,motevaset,Ryukyu Islands,11.601612695655714
-4.9,Ryukyu Islands,2025-09-20,04:46:35.8,126.12,24.11,10.0,9,motevaset,Ryukyu Islands,17.8402875856865
-4.8,Ryukyu Islands,2025-09-23,17:08:13.9,128.73,28.89,133.0,9,motevaset,Ryukyu Islands,12.899304909180191
-4.2,Near East Coast of Honshu,2025-09-24,18:03:16.8,142.14,38.92,54.0,9,motevaset,Near East Coast of Honshu,4.053431033087888
-4.8,Off East Coast of Honshu,2025-09-27,13:37:19.0,144.14,37.79,10.0,9,motevaset,Off East Coast of Honshu,4.919296000445581
-4.7,Off East Coast of Honshu,2025-09-28,01:36:38.4,144.17,37.7,10.0,9,motevaset,Off East Coast of Honshu,4.908898159465107
-4.8,Southwestern Ryukyu Islands,2025-09-28,21:23:51.7,123.31,24.34,58.0,9,motevaset,Southwestern Ryukyu Islands,19.929155655471206
-4.8,Near East Coast of Honshu,2025-10-01,14:50:06.4,141.98,38.76,60.0,10,motevaset,Near East Coast of Honshu,3.8293977516053275
-4.6,Off East Coast of Honshu,2025-10-01,17:40:51.7,144.12,37.81,10.0,10,motevaset,Off East Coast of Honshu,4.909822923487166
-4.7,Near East Coast of Honshu,2025-10-03,03:48:03.3,140.04,35.51,103.0,10,motevaset,Near East Coast of Honshu,0.39183305118378914
-4.8,Near East Coast of Honshu,2025-10-04,14:15:19.3,142.16,39.71,41.0,10,motevaset,Near East Coast of Honshu,4.7177245722911785
-5.9,Near East Coast of Honshu,2025-10-04,15:21:08.8,141.49,37.4,39.0,10,motevaset,Near East Coast of Honshu,2.4818729097195993
-4.9,Off East Coast of Honshu,2025-10-06,14:20:25.7,144.19,37.7,10.0,10,motevaset,Off East Coast of Honshu,4.927150610647091
-5.0,Off East Coast of Honshu,2025-10-06,14:58:00.7,144.16,37.7,10.0,10,motevaset,Off East Coast of Honshu,4.899777050029929
-4.7,Off East Coast of Honshu,2025-10-06,18:25:05.4,144.21,37.69,10.0,10,motevaset,Off East Coast of Honshu,4.9413596448750905
-4.5,Bonin Islands,2025-10-06,20:02:44.1,140.39,27.19,461.0,10,motevaset,Bonin Islands,8.528137143597071
-5.1,Near East Coast of Honshu,2025-10-07,00:30:25.0,141.27,37.58,53.0,10,motevaset,Near East Coast of Honshu,2.4627263631999448
-4.8,Off East Coast of Honshu,2025-10-07,01:17:17.8,144.19,37.77,10.0,10,motevaset,Off East Coast of Honshu,4.956125819629684
-5.3,Ryukyu Islands,2025-10-07,21:38:38.3,129.1,29.34,10.0,10,motevaset,Ryukyu Islands,12.349099527495925
-4.8,Southeast of Honshu,2025-10-11,03:22:02.2,138.44,30.39,445.0,10,motevaset,Southeast of Honshu,5.445314787962218
-4.8,Ryukyu Islands,2025-10-11,14:24:22.4,127.7,27.17,86.0,10,motevaset,Ryukyu Islands,14.70995408354492
-4.7,Near East Coast of Honshu,2025-10-13,03:25:47.8,142.42,38.66,63.0,10,motevaset,Near East Coast of Honshu,4.03329779956798
-4.8,Near West Coast of Honshu,2025-10-14,03:34:24.2,139.42,39.66,10.0,10,motevaset,Near West Coast of Honshu,3.9797853133052237
-4.6,Southeast of Honshu,2025-10-14,23:29:10.7,138.27,30.41,442.0,10,motevaset,Southeast of Honshu,5.46757269178929
-4.5,Eastern Honshu,2025-10-15,08:50:24.5,140.84,38.81,70.0,10,motevaset,Eastern Honshu,3.325073403701039
+magnitude,place,date,time,longitude,latitude,depth,Month,Category,region,distance_to_tokyo,source
+5.0,Ryukyu Islands,2025-09-17,2025-09-17 12:55:07.300,129.71,29.6,33.0,9,motevaset,Ryukyu Islands,11.71876962697022,Ryukyu Islands
+4.6,Ryukyu Islands,2025-09-17,2025-09-17 13:00:34.700,129.93,29.42,52.0,9,motevaset,Ryukyu Islands,11.626584260650237,Ryukyu Islands
+4.9,Ryukyu Islands,2025-09-20,2025-09-20 04:46:35.800,126.12,24.11,10.0,9,motevaset,Ryukyu Islands,17.85780366030492,Ryukyu Islands
+4.8,Ryukyu Islands,2025-09-23,2025-09-23 17:08:13.900,128.73,28.89,133.0,9,motevaset,Ryukyu Islands,12.925096037167389,Ryukyu Islands
+4.2,Near East Coast of Honshu,2025-09-24,2025-09-24 18:03:16.800,142.14,38.92,54.0,9,motevaset,Near East Coast of Honshu,4.048860774341342,Near East Coast of Honshu
+4.8,Off East Coast of Honshu,2025-09-27,2025-09-27 13:37:19.000,144.14,37.79,10.0,9,motevaset,Off East Coast of Honshu,4.888013867615342,Off East Coast of Honshu
+4.7,Off East Coast of Honshu,2025-09-28,2025-09-28 01:36:38.400,144.17,37.7,10.0,9,motevaset,Off East Coast of Honshu,4.876664184665572,Off East Coast of Honshu
+4.8,Southwestern Ryukyu Islands,2025-09-28,2025-09-28 21:23:51.700,123.31,24.34,58.0,9,motevaset,Southwestern Ryukyu Islands,19.952200218772862,Southwestern Ryukyu Islands
+4.8,Near East Coast of Honshu,2025-10-01,2025-10-01 14:50:06.400,141.98,38.76,60.0,10,motevaset,Near East Coast of Honshu,3.825325289436176,Near East Coast of Honshu
+4.6,Off East Coast of Honshu,2025-10-01,2025-10-01 17:40:51.700,144.12,37.81,10.0,10,motevaset,Off East Coast of Honshu,4.878812516381426,Off East Coast of Honshu
+4.7,Near East Coast of Honshu,2025-10-03,2025-10-03 03:48:03.300,140.04,35.51,103.0,10,motevaset,Near East Coast of Honshu,0.3333100208514527,Near East Coast of Honshu
+4.8,Near East Coast of Honshu,2025-10-04,2025-10-04 14:15:19.300,142.16,39.71,41.0,10,motevaset,Near East Coast of Honshu,4.718847271315318,Near East Coast of Honshu
+5.9,Near East Coast of Honshu,2025-10-04,2025-10-04 15:21:08.800,141.49,37.4,39.0,10,motevaset,Near East Coast of Honshu,2.4681607666438667,Near East Coast of Honshu
+4.9,Off East Coast of Honshu,2025-10-06,2025-10-06 14:20:25.700,144.19,37.7,10.0,10,motevaset,Off East Coast of Honshu,4.894833763265104,Off East Coast of Honshu
+5.0,Off East Coast of Honshu,2025-10-06,2025-10-06 14:58:00.700,144.16,37.7,10.0,10,motevaset,Off East Coast of Honshu,4.867584777895502,Off East Coast of Honshu
+4.7,Off East Coast of Honshu,2025-10-06,2025-10-06 18:25:05.400,144.21,37.69,10.0,10,motevaset,Off East Coast of Honshu,4.908869887255119,Off East Coast of Honshu
+4.5,Bonin Islands,2025-10-06,2025-10-06 20:02:44.100,140.39,27.19,461.0,10,motevaset,Bonin Islands,8.492902894181702,Bonin Islands
+5.1,Near East Coast of Honshu,2025-10-07,2025-10-07 00:30:25.000,141.27,37.58,53.0,10,motevaset,Near East Coast of Honshu,2.455670492961146,Near East Coast of Honshu
+4.8,Off East Coast of Honshu,2025-10-07,2025-10-07 01:17:17.800,144.19,37.77,10.0,10,motevaset,Off East Coast of Honshu,4.924445508887271,Off East Coast of Honshu
+5.3,Ryukyu Islands,2025-10-07,2025-10-07 21:38:38.300,129.1,29.34,10.0,10,motevaset,Ryukyu Islands,12.375693175333657,Ryukyu Islands
+4.8,Southeast of Honshu,2025-10-11,2025-10-11 03:22:02.200,138.44,30.39,445.0,10,motevaset,Southeast of Honshu,5.426464739588747,Southeast of Honshu
+4.8,Ryukyu Islands,2025-10-11,2025-10-11 14:24:22.400,127.7,27.17,86.0,10,motevaset,Ryukyu Islands,14.732384585327653,Ryukyu Islands
+4.7,Near East Coast of Honshu,2025-10-13,2025-10-13 03:25:47.800,142.42,38.66,63.0,10,motevaset,Near East Coast of Honshu,4.023220298467377,Near East Coast of Honshu
+4.8,Near West Coast of Honshu,2025-10-14,2025-10-14 03:34:24.200,139.42,39.66,10.0,10,motevaset,Near West Coast of Honshu,4.014785370352941,Near West Coast of Honshu
+4.6,Southeast of Honshu,2025-10-14,2025-10-14 23:29:10.700,138.27,30.41,442.0,10,motevaset,Southeast of Honshu,5.450465261791871,Southeast of Honshu
+4.5,Eastern Honshu,2025-10-15,2025-10-15 08:50:24.500,140.84,38.81,70.0,10,motevaset,Eastern Honshu,3.3378729110018615,Eastern Honshu

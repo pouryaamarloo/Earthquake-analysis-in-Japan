@@ -102,12 +102,13 @@ def japan_messy_earthquakes():
                 except:
                     return pd.NaT
 
+    data_f.rename(columns={'mag': 'magnitude'}, inplace=True)
 
-    data_f['mag'] = data_f['mag'].apply(number)
-    data_f['mag'] = pd.to_numeric(data_f['mag'], errors='coerce')
+    data_f['magnitude'] = data_f['magnitude'].apply(number)
+    data_f['magnitude'] = pd.to_numeric(data_f['magnitude'], errors='coerce')
 
     # حذف داده‌های گمشده
-    data_f = data_f.dropna(subset=['latitude', 'longitude', 'mag'])
+    data_f = data_f.dropna(subset=['latitude', 'longitude', 'magnitude'])
     data_f['depth'] = data_f['depth'].fillna(data_f['depth'].mean())
     print(data_f.isna().sum())
 
@@ -123,7 +124,7 @@ def japan_messy_earthquakes():
         elif i > 6:
             return "Strong"
 
-    data_f['Category'] = data_f['mag'].apply(category)
+    data_f['Category'] = data_f['magnitude'].apply(category)
 
     # استخراج منطقه (در صورت وجود ستون place)
     if 'place' in data_f.columns:
@@ -134,17 +135,17 @@ def japan_messy_earthquakes():
     # گروه‌بندی‌ها
 
     group_1 = data_f.groupby(['Month', 'Category']).agg(
-        count=('mag', 'size'),
-        mean_mag=('mag', 'mean')
+        count=('magnitude', 'size'),
+        mean_mag=('magnitude', 'mean')
     )
     print(group_1)
 
     if 'region' in data_f.columns:
         group_2 = data_f.groupby('region').agg(
-            quake_count=('mag', 'size'),
-            mean_mag=('mag', 'mean'),
+            quake_count=('magnitude', 'size'),
+            mean_mag=('magnitude', 'mean'),
             mean_depth=('depth', 'mean'),
-            max_mag=('mag', 'max'),
+            max_mag=('magnitude', 'max'),
             max_depth=('depth', 'max')
         )
         print(group_2)
@@ -181,6 +182,7 @@ def japan_messy_earthquakes():
     dist_percentile_1 = np.percentile(distance , 25)
     dist_percentile_2 = np.percentile(distance , 50)
     dist_percentile_3 = np.percentile(distance , 75)
+    data_f['source'] =data_f['region']
     data_f.to_csv("clean_csv/JAPAN_messy.csv", index=False)
     #مصورسازی نمودارها
 

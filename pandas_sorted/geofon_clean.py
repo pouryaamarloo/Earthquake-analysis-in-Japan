@@ -7,7 +7,7 @@ def geofon_clean():
     df = pd.read_csv("base_csv/JAPAN_GEOFONN.csv", header=None)
 
     df = df[[0, 1, 2, 3, 4, 5, 6]].rename(columns={
-        0: 'mag',
+        0: 'magnitude',
         1: 'place',
         2: 'date',
         3: 'time',
@@ -21,17 +21,15 @@ def geofon_clean():
 
     # تبدیل نوع داده‌ها
     df = df.astype({
-        'mag': float,
+        'magnitude': float,
         'longitude': float,
         'latitude': float,
         'depth': float
     })
 
     # ساخت ستون تاریخ‌زمان
-    df['Datetime'] = pd.to_datetime(df['date'] + ' ' + df['time'], errors='coerce')
+    df['time'] = pd.to_datetime(df['date'] + ' ' + df['time'], errors='coerce')
 
-    # حذف ردیف‌های بدون تاریخ معتبر
-    df = df.dropna(subset=['Datetime'])
 
     def req_category(m):
         if m < 4:
@@ -42,14 +40,13 @@ def geofon_clean():
             return "shadid"
 
     # افزودن ستون ماه و دسته‌بندی
-    df["Month"] = df['Datetime'].dt.month
-    df["Category"] = df['mag'].apply(req_category)
+    df["Month"] = df['time'].dt.month
+    df["Category"] = df['magnitude'].apply(req_category)
 
     # مرتب‌سازی بر اساس زمان
-    df = df.sort_values(by='Datetime')
+    df = df.sort_values(by='time')
 
     # ذخیره فایل تمیزشده
-    df.drop(columns=['Datetime'], inplace=True)
     df["region"] = df["place"]
     tokyo_latitude = 35.6895
     tokyo_longitude = 139.6917
@@ -61,11 +58,10 @@ def geofon_clean():
     )
 
 
-    df.to_csv("clean_csv/JAPAN_GEOFON_cleaned.csv", index=False)
 
     # گروه‌بندی بر اساس ماه و دسته
     month_grouped = df.groupby(['Month', 'Category'])
-    mag_mean = month_grouped['mag'].mean()
+    mag_mean = month_grouped['magnitude'].mean()
     count_month = month_grouped.size()
     # ایجاد ستون regionبرای تشخیص منطقه زلزله زده
 
@@ -75,16 +71,33 @@ def geofon_clean():
     count_region = region_group.size().reset_index(name='count')
 
     # محاسبه میانگین بزرگی mag در هر منطقه
-    mean_mag_region = region_group[["mag","depth"]].mean().reset_index()
+    mean_mag_region = region_group[["magnitude","depth"]].mean().reset_index()
 
     # محاسبه بیشترین بزرگی و عمق در هر منطقه
-    max_mag_or_depth = df.groupby("region")[["mag", "depth"]].max().reset_index()
+    max_mag_or_depth = df.groupby("region")[["magnitude", "depth"]].max().reset_index()
 
     count_region.plot(kind='bar', x='region', y='count')
     plt.savefig("jpg/JAPAN_GEOFON_cleaned.png",bbox_inches='tight')
     plt.show()
 
 
+    x1=df["latitude"]
+    y1=df["longitude"]
+    #tokyo (lat and long):
+    x2=35.6581
+    y2=139.7414
+    df["distance_to_tokyo"]= np.sqrt((x2-x1)**2+(y2-y1)**2)
+    dist=df["distance_to_tokyo"]
+    #محاسبات آماری روی آرایه ها
+    dist_mean=np.mean(dist)
+    dist_var=np.var(dist)
+    dist_std=np.std(dist)
+    #percentile
+    dist_percentile_1=np.percentile(dist , 25)
+    dist_percentile_2=np.percentile(dist , 50)
+    dist_percentile_3=np.percentile(dist , 75)
+    df['source'] = df['place']
+    df.to_csv("clean_csv/JAPAN_GEOFON_cleaned.csv", index=False)
 
     # محاسبات آماری
     print("Mean of distance :", np.mean(df['distance_to_tokyo']))
@@ -97,4 +110,3 @@ def geofon_clean():
     print("\n  منطقه وقوع زلزله بر اساس بزرگی :\n",max_mag_or_depth )
 
 
-geofon_clean()

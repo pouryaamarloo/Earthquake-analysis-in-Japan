@@ -1,22 +1,45 @@
 from scraping import usgs,emsc,geofon
 from pandas_sorted import geofon_clean,japan_messy_earthquakes,emsc_clean,usgs_clean
-
-
+from database_sql.sql import SQLConnector
+import pandas as pd
+import glob
+#
 # def call_scraper():
 #     usgs.earthquake_api()
 #     geofon.geofon()
 #     emsc.emsc()
 #     print("داده ها استخراج شدند")
-#     return
+# #     return
 def sort_data():
     geofon_clean.geofon_clean()
     japan_messy_earthquakes.japan_messy_earthquakes()
     emsc_clean.emsc_clean()
     usgs_clean.usgs_clean()
     return
-
+def database(df):
+    database = SQLConnector()
+    database.insert(df)
+    all_earthquakes = database.fetch_all()
+    earthquakes_by_month_region = database.get_all_earthquakes()
+    avg_magnitude_region = database.get_average_magnitude_by_region()
+    recent_earthquakes= database.get_recent_earthquakes_by_region()
+    depth_stats_region = database.get_depth_by_region()
+    deleted_rows_count= database.delete_suspicious_rows()
+    print(all_earthquakes,earthquakes_by_month_region,avg_magnitude_region,recent_earthquakes,depth_stats_region)
 
 
 if __name__ == '__main__':
-    # call_scraper()
+    #call_scraper()
     sort_data()
+    csv_files = glob.glob("clean_csv/*.csv")
+    for file in csv_files:
+        df = pd.read_csv(file)
+        if df.empty:
+            continue
+        else :
+            database(df)
+
+
+
+
+
