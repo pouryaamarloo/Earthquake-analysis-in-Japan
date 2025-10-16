@@ -142,15 +142,44 @@ class EarthquakeVisualizer:
     
     def plot_box_distribution(self):
         df = self.db.fetch_all()
-        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 10), sharex=True)
+        df['depth_bin'] = pd.qcut(df['depth'], q=10, duplicates='drop')
+        
+        fig, ax = plt.subplots(figsize=(16, 8))
 
-        sns.boxplot(data=df, x='region', y='magnitude', ax=ax1, color='#2E86AB')
-        sns.boxplot(data=df, x='region', y='depth', ax=ax2, color='#A23B72')
+        sns.boxplot(data=df, x='depth_bin', y='magnitude', ax=ax, hue="depth_bin", palette='viridis', legend=False)
         
-        ax2.tick_params(axis='x', rotation=45)
-        ax2.set_xlabel('Region', fontsize=12)
-        ax2.set_ylabel('Depth', fontsize=12)
-        ax1.set_ylabel('Magnitude', fontsize=12)
+        ax.set_title('Magnitude Distribution by Depth Range', fontsize=14, fontweight='bold', pad=20)
+        ax.set_xlabel('Depth Range (km)', fontsize=12)
+        ax.set_ylabel('Magnitude', fontsize=12)
+        ax.tick_params(axis='x', rotation=45)
+        ax.grid(True, alpha=0.3, axis='y')
         
+        plt.tight_layout()
+        plt.show()
+    
+    def plot_heatmap(self):
+        df = self.db.fetch_all()
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+        
+        sns.kdeplot(
+            data=df,
+            x='longitude', y='latitude',
+            fill=True, cmap='hot', thresh=0.05,
+            ax=ax1, cbar=True
+        )
+        
+        ax1.set_xlabel('Longitude', fontsize=12)
+        ax1.set_ylabel('Latitude', fontsize=12)
+
+        sns.kdeplot(
+            data=df,
+            x='distance_to_tokyo', y='magnitude',
+            fill=True, cmap='hot', thresh=0.05,
+            ax=ax2, cbar=True
+        )
+        ax2.set_xlabel('Distance to Tokyo', fontsize=12)
+        ax2.set_ylabel('Magnitude', fontsize=12)
+
+
         plt.tight_layout()
         plt.show()
