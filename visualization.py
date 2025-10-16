@@ -70,3 +70,39 @@ class EarthquakeVisualizer:
         plt.tight_layout()
         fig.suptitle('Earthquake Magnitude Distribution', fontsize=16, fontweight='bold', y=1.02)
         plt.show()
+    
+    def plot_time_trends(self):
+        df = self.db.fetch_all()
+        df['week_period'] = df['time'].dt.to_period('W').dt.start_time
+        df['day_period'] = df['time'].dt.to_period('D').dt.start_time
+        weekly_df = df.groupby('week_period').agg({'magnitude': 'mean', 'depth': 'count'}).rename(columns={'depth': 'count'})
+        daily_df = df.groupby('day_period').agg({'magnitude': 'mean', 'depth': 'count'}).rename(columns={'depth': 'count'})
+        
+        fig, (ax1, ax3) = plt.subplots(2, 1, figsize=(16, 10))
+        colors = ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D']
+        
+        ax1.plot(weekly_df.index, weekly_df['count'], color=colors[0], linewidth=2, marker='o', markersize=3)
+        ax1.set_ylabel('Weekly Count', color=colors[0], fontsize=12, fontweight='bold')
+        ax1.tick_params(axis='y', labelcolor=colors[0])
+        ax1.grid(True, alpha=0.3)
+        ax1.set_title('Weekly Earthquake Trends', fontsize=14, fontweight='bold', pad=20)
+        
+        ax2 = ax1.twinx()
+        ax2.plot(weekly_df.index, weekly_df['magnitude'], color=colors[1], linewidth=2, marker='o', markersize=3)
+        ax2.set_ylabel('Average Magnitude', color=colors[1], fontsize=12, fontweight='bold')
+        ax2.tick_params(axis='y', labelcolor=colors[1])
+        
+        ax3.plot(daily_df.index, daily_df['count'], color=colors[2], linewidth=1.5, alpha=0.8)
+        ax3.set_ylabel('Daily Count', color=colors[2], fontsize=12, fontweight='bold')
+        ax3.tick_params(axis='y', labelcolor=colors[2])
+        ax3.grid(True, alpha=0.3)
+        ax3.set_title('Daily Earthquake Trends', fontsize=14, fontweight='bold', pad=20)
+        ax3.set_xlabel('Date', fontsize=12)
+        
+        ax4 = ax3.twinx()
+        ax4.plot(daily_df.index, daily_df['magnitude'], color=colors[3], linewidth=1.5, alpha=0.8)
+        ax4.set_ylabel('Average Magnitude', color=colors[3], fontsize=12, fontweight='bold')
+        ax4.tick_params(axis='y', labelcolor=colors[3])
+        
+        plt.tight_layout()
+        plt.show()
