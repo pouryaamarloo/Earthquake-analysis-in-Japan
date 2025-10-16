@@ -36,7 +36,7 @@ class EarthquakeVisualizer:
         ax1.grid(True, alpha=0.3)
         
         ax1.legend(
-            labels=region_labels,
+            labels=region_labels[:10],
             bbox_to_anchor=(1.05, 1),
             loc='upper left',
             fontsize=9,
@@ -115,9 +115,9 @@ class EarthquakeVisualizer:
             data=df, 
             x='time', 
             y='magnitude', 
-            alpha=0.7, 
             s=40,
-            ax=ax1
+            ax=ax1,
+            c='#2E86AB'
         )
         ax1.set_title('Magnitude vs Time', fontsize=14, fontweight='bold', pad=20)
         ax1.set_xlabel('Time', fontsize=12)
@@ -128,9 +128,9 @@ class EarthquakeVisualizer:
             data=df, 
             x='time', 
             y='depth', 
-            alpha=0.7, 
             s=40,
-            ax=ax2
+            ax=ax2,
+            c='#A23B72'
         )
         ax2.set_title('Depth vs Time', fontsize=14, fontweight='bold', pad=20)
         ax2.set_xlabel('Time', fontsize=12)
