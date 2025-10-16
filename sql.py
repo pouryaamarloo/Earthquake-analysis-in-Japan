@@ -22,6 +22,21 @@ class SQLConnector:
             chunksize=1000
         )
     
+    def fetch_all(self):
+        with self.engine.connect() as conn:
+            res = conn.execute(
+                text(
+                    """
+                    SELECT *
+                    FROM earthquakes
+                    """
+                )
+            )
+        
+        df = pd.DataFrame(res.all(), columns=list(res.keys()))
+        df['time'] = pd.to_datetime(df['time'])
+        return df
+    
     def get_all_earthquakes(self):
         with self.engine.connect() as conn:
             res = conn.execute(

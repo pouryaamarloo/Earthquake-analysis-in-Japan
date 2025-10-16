@@ -58,7 +58,7 @@ class EarthquakeVisualizer:
         ax2.set_xlabel('Magnitude', fontsize=12)
         ax2.set_ylabel('Count', fontsize=12)
         ax2.grid(True, alpha=0.3)
-            
+        
         ax2.legend(
             labels=source_labels,
             bbox_to_anchor=(1.05, 1),
@@ -84,7 +84,7 @@ class EarthquakeVisualizer:
         ax1.plot(weekly_df.index, weekly_df['count'], color=colors[0], linewidth=2, marker='o', markersize=3)
         ax1.set_ylabel('Weekly Count', color=colors[0], fontsize=12, fontweight='bold')
         ax1.tick_params(axis='y', labelcolor=colors[0])
-        ax1.grid(True, alpha=0.3)
+        ax1.tick_params(axis='x', rotation=45)
         ax1.set_title('Weekly Earthquake Trends', fontsize=14, fontweight='bold', pad=20)
         
         ax2 = ax1.twinx()
@@ -95,7 +95,7 @@ class EarthquakeVisualizer:
         ax3.plot(daily_df.index, daily_df['count'], color=colors[2], linewidth=1.5, alpha=0.8)
         ax3.set_ylabel('Daily Count', color=colors[2], fontsize=12, fontweight='bold')
         ax3.tick_params(axis='y', labelcolor=colors[2])
-        ax3.grid(True, alpha=0.3)
+        ax3.tick_params(axis='x', rotation=45)
         ax3.set_title('Daily Earthquake Trends', fontsize=14, fontweight='bold', pad=20)
         ax3.set_xlabel('Date', fontsize=12)
         
@@ -103,6 +103,39 @@ class EarthquakeVisualizer:
         ax4.plot(daily_df.index, daily_df['magnitude'], color=colors[3], linewidth=1.5, alpha=0.8)
         ax4.set_ylabel('Average Magnitude', color=colors[3], fontsize=12, fontweight='bold')
         ax4.tick_params(axis='y', labelcolor=colors[3])
+        
+        plt.tight_layout()
+        plt.show()
+    
+    def plot_scatter(self):
+        df = self.db.fetch_all()
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 10))
+        
+        sns.scatterplot(
+            data=df, 
+            x='time', 
+            y='magnitude', 
+            alpha=0.7, 
+            s=40,
+            ax=ax1
+        )
+        ax1.set_title('Magnitude vs Time', fontsize=14, fontweight='bold', pad=20)
+        ax1.set_xlabel('Time', fontsize=12)
+        ax1.set_ylabel('Magnitude', fontsize=12)
+        ax1.tick_params(axis='x', rotation=45)
+        
+        sns.scatterplot(
+            data=df, 
+            x='time', 
+            y='depth', 
+            alpha=0.7, 
+            s=40,
+            ax=ax2
+        )
+        ax2.set_title('Depth vs Time', fontsize=14, fontweight='bold', pad=20)
+        ax2.set_xlabel('Time', fontsize=12)
+        ax2.set_ylabel('Depth', fontsize=12)
+        ax2.tick_params(axis='x', rotation=45)
         
         plt.tight_layout()
         plt.show()
