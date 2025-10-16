@@ -8,9 +8,9 @@ services:
             - ${POSTGRES_HOST_PORT:-16584}:5432
         
         volumes:
-            - /database/data/postgres:/var/lib/postgresql/data
-            - /database/data/backup:/backup
-            - /database/data/archive:/archive
+            - ./database/data/postgres:/var/lib/postgresql/data
+            - ./database/data/backup:/backup
+            - ./database/data/archive:/archive
         
         environment:
             - POSTGRES_USER=${POSTGRES_USER:-samaneh}
