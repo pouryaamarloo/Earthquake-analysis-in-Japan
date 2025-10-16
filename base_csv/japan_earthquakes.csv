@@ -1,7 +1,7 @@
 time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
 2025-10-14T23:29:10.333Z,30.3762,138.2748,440.542,4.5,mb,59,99,3.029,0.41,us,us6000rh76,2025-10-15T00:42:51.040Z,"Izu Islands, Japan region",earthquake,11.38,7.633,0.034,261,reviewed,us,us
 2025-10-14T03:34:24.223Z,39.605,139.5058,11.325,4.6,mb,59,126,1.681,0.77,us,us6000rgzf,2025-10-14T05:34:11.866Z,"51 km SW of Tennō, Japan",earthquake,7.48,4.275,0.08,47,reviewed,us,us
-2025-10-13T03:25:44.134Z,38.5931,142.5944,38.354,4.7,mb,39,146,2.491,0.93,us,us6000rgtf,2025-10-16T02:44:16.412Z,"92 km SE of Ōfunato, Japan",earthquake,8.05,7.918,0.087,40,reviewed,us,us
+2025-10-13T03:25:44.134Z,38.5931,142.5944,38.354,4.7,mb,39,146,2.491,0.93,us,us6000rgtf,2025-10-16T12:09:20.916Z,"92 km SE of Ōfunato, Japan",earthquake,8.05,7.918,0.087,40,reviewed,us,us
 2025-10-11T03:22:00.952Z,30.3456,138.4539,432.857,4.8,mb,71,49,2.994,0.63,us,us6000rghz,2025-10-11T03:38:55.040Z,"Izu Islands, Japan region",earthquake,8.96,6.664,0.028,385,reviewed,us,us
 2025-10-10T22:06:36.054Z,41.7258,142.679,58.696,4.3,mb,35,164,0.459,1.12,us,us6000rggg,2025-10-10T22:34:36.040Z,"48 km S of Urakawa, Japan",earthquake,7.9,9.88,0.119,20,reviewed,us,us
 2025-10-07T21:38:37.324Z,29.2431,129.3903,10,5.3,mww,63,108,2.438,0.83,us,us6000rfh7,2025-10-07T23:28:05.040Z,"90 km NNW of Tatsugō, Japan",earthquake,3.96,1.851,0.052,36,reviewed,us,us
