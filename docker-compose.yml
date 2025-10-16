@@ -11,6 +11,7 @@ services:
             - ./database/data/postgres:/var/lib/postgresql/data
             - ./database/data/backup:/backup
             - ./database/data/archive:/archive
+            - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
         
         environment:
             - POSTGRES_USER=${POSTGRES_USER:-samaneh}

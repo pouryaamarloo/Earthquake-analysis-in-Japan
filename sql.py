@@ -32,8 +32,8 @@ class SQLConnector:
                     """
                 )
             )
-        
-        df = pd.DataFrame(res.all(), columns=list(res.keys()))
+
+        df = pd.DataFrame(res.all(), columns=list(res.keys())).set_index("id")
         df['time'] = pd.to_datetime(df['time'])
         return df
     
@@ -49,7 +49,7 @@ class SQLConnector:
                 )
             )
         
-        return pd.DataFrame(res.all(), columns=list(res.keys()))
+        return pd.DataFrame(res.all(), columns=list(res.keys())).set_index("id")
     
     def get_average_magnitude_by_region(self):
         with self.engine.connect() as conn:
@@ -64,7 +64,7 @@ class SQLConnector:
                 )
             )
         
-        return pd.DataFrame(res.all(), columns=list(res.keys()))
+        return pd.DataFrame(res.all(), columns=list(res.keys())).set_index("id")
     
     def get_recent_earthquakes_by_region(self):
         with self.engine.connect() as conn:
@@ -79,7 +79,7 @@ class SQLConnector:
                 )
             )
         
-        return pd.DataFrame(res.all(), columns=list(res.keys()))
+        return pd.DataFrame(res.all(), columns=list(res.keys())).set_index("id")
     
     def get_depth_by_region(self):
         with self.engine.connect() as conn:
@@ -94,7 +94,7 @@ class SQLConnector:
                 )
             )
         
-        return pd.DataFrame(res.all(), columns=list(res.keys()))
+        return pd.DataFrame(res.all(), columns=list(res.keys())).set_index("id")
     
     def delete_suspicious_rows(self):
         with self.engine.begin() as conn:
