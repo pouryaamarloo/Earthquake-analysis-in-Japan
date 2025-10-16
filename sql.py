@@ -8,7 +8,7 @@ class SQLConnector:
         self.engine = create_engine("postgresql+psycopg2://samaneh:123456@localhost:16584/postgres")
         
         self.columns = [
-            'time','longitude','latitude','depth','magnitude','region','source'
+            'time','longitude','latitude','depth','magnitude','region','source', 'distance_to_tokyo'
         ]
     
     def insert(self, df):

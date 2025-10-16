@@ -5,6 +5,7 @@ CREATE TABLE earthquakes (
     latitude FLOAT,
     depth FLOAT,
     magnitude FLOAT,
+    distance_to_tokyo FLOAT,
     region VARCHAR(255),
     source VARCHAR(50)
 );
