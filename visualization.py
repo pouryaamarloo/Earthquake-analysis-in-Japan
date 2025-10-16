@@ -139,3 +139,18 @@ class EarthquakeVisualizer:
         
         plt.tight_layout()
         plt.show()
+    
+    def plot_box_distribution(self):
+        df = self.db.fetch_all()
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 10), sharex=True)
+
+        sns.boxplot(data=df, x='region', y='magnitude', ax=ax1, color='#2E86AB')
+        sns.boxplot(data=df, x='region', y='depth', ax=ax2, color='#A23B72')
+        
+        ax2.tick_params(axis='x', rotation=45)
+        ax2.set_xlabel('Region', fontsize=12)
+        ax2.set_ylabel('Depth', fontsize=12)
+        ax1.set_ylabel('Magnitude', fontsize=12)
+        
+        plt.tight_layout()
+        plt.show()
