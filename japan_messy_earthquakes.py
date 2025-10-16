@@ -147,7 +147,7 @@ if 'region' in data_f.columns:
     print(group_2)
 
     # نمودار
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(12, 6))
     plt.bar(group_2.index, group_2['quake_count'])
     plt.xticks(rotation=45, ha='right')
     plt.xlabel('Region')
@@ -180,5 +180,3 @@ dist_percentile_3 = np.percentile(distance , 75)
 # ذخیره نتایج در فایل جدید
 processed_columns= ["time","latitude","longitude","depth","mag","Category","region","distance_to_tokyo"]
 data_f[processed_columns].to_csv("JAPAN_DATASETT.csv", index=False, encoding="utf-8-sig")
-
-#مصورسازی نمودارها
