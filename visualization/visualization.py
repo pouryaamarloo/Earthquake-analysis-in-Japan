@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import datetime
+import os
 
 
 class EarthquakeVisualizer:
@@ -9,7 +11,7 @@ class EarthquakeVisualizer:
         self.db = connector
         plt.style.use('seaborn-v0_8-whitegrid')
     
-    def plot_magnitude_histogram(self, bins=20):
+    def plot_magnitude_histogram(self,csv_name , bins =20 ):
         df = self.db.fetch_all()
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
 
@@ -69,9 +71,13 @@ class EarthquakeVisualizer:
 
         plt.tight_layout()
         fig.suptitle('Earthquake Magnitude Distribution', fontsize=16, fontweight='bold', y=1.02)
+        # timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_name_only = os.path.splitext(os.path.basename(csv_name))[0]
+
+        plt.savefig(f'jpg/histogram/Earthquake Magnitude Distribution{file_name_only}.png')
         plt.show()
     
-    def plot_time_trends(self):
+    def plot_time_trends(self,csv_name):
         df = self.db.fetch_all()
         df['week_period'] = df['time'].dt.to_period('W').dt.start_time
         df['day_period'] = df['time'].dt.to_period('D').dt.start_time
@@ -105,9 +111,13 @@ class EarthquakeVisualizer:
         ax4.tick_params(axis='y', labelcolor=colors[3])
         
         plt.tight_layout()
+        # timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_name_only = os.path.splitext(os.path.basename(csv_name))[0]
+
+        plt.savefig(f'jpg/time_trend/Earthquake Magnitude Distribution{file_name_only}.png')
         plt.show()
     
-    def plot_scatter(self):
+    def plot_scatter(self,csv_name):
         df = self.db.fetch_all()
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 10))
         
@@ -138,9 +148,13 @@ class EarthquakeVisualizer:
         ax2.tick_params(axis='x', rotation=45)
         
         plt.tight_layout()
+        # timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_name = os.path.splitext(os.path.basename(csv_name))[0]
+
+        plt.savefig(f'jpg/scatter/Earthquake Magnitude Distribution{file_name}.png')
         plt.show()
     
-    def plot_box_distribution(self):
+    def plot_box_distribution(self,csv_name):
         df = self.db.fetch_all()
         df['depth_bin'] = pd.qcut(df['depth'], q=10, duplicates='drop')
         
@@ -155,9 +169,13 @@ class EarthquakeVisualizer:
         ax.grid(True, alpha=0.3, axis='y')
         
         plt.tight_layout()
+        # timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_name_only = os.path.splitext(os.path.basename(csv_name))[0]
+
+        plt.savefig(f'jpg/box/Earthquake Magnitude Distribution{file_name_only}.png')
         plt.show()
     
-    def plot_heatmap(self):
+    def plot_heatmap(self,csv_name):
         df = self.db.fetch_all()
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
         
@@ -182,4 +200,8 @@ class EarthquakeVisualizer:
 
 
         plt.tight_layout()
+        # timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_name_only = os.path.splitext(os.path.basename(csv_name))[0]
+
+        plt.savefig(f'jpg/heatmap/Earthquake Magnitude Distribution{file_name_only}.png')
         plt.show()

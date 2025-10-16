@@ -3,6 +3,7 @@ from pandas_sorted import geofon_clean,japan_messy_earthquakes,emsc_clean,usgs_c
 from database_sql.sql import SQLConnector
 import pandas as pd
 import glob
+from visualization.visualization import EarthquakeVisualizer
 #
 # def call_scraper():
 #     usgs.earthquake_api()
@@ -16,7 +17,7 @@ def sort_data():
     emsc_clean.emsc_clean()
     usgs_clean.usgs_clean()
     return
-def database(df):
+def database_e(df,csv_name):
     database = SQLConnector()
     database.insert(df)
     all_earthquakes = database.fetch_all()
@@ -25,7 +26,13 @@ def database(df):
     recent_earthquakes= database.get_recent_earthquakes_by_region()
     depth_stats_region = database.get_depth_by_region()
     deleted_rows_count= database.delete_suspicious_rows()
-    print(all_earthquakes,earthquakes_by_month_region,avg_magnitude_region,recent_earthquakes,depth_stats_region)
+    visualizer = EarthquakeVisualizer(database)
+    visualizer.plot_magnitude_histogram(csv_name)
+    visualizer.plot_time_trends(csv_name)
+    visualizer.plot_scatter(csv_name)
+    visualizer.plot_box_distribution(csv_name)
+    visualizer.plot_heatmap(csv_name)
+
 
 
 if __name__ == '__main__':
@@ -37,7 +44,7 @@ if __name__ == '__main__':
         if df.empty:
             continue
         else :
-            database(df)
+            database_e(df,file)
 
 
 
