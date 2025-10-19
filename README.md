@@ -54,17 +54,4 @@ This project provides a modular, database-driven system to:
 
 ---
 
-## ⚙️ Requirements
 
-Make sure you have the following installed:
-
-- **Python 3.10+**
-- **PostgreSQL 14+**
-- **psycopg2**
-- **SQLAlchemy**
-- **Pandas**
-- **NumPy**
-
-### Install dependencies
-```bash
-pip install pandas numpy sqlalchemy psycopg2
