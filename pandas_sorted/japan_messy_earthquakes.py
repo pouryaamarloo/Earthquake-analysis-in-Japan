@@ -183,6 +183,6 @@ def japan_messy_earthquakes():
     dist_percentile_2 = np.percentile(distance , 50)
     dist_percentile_3 = np.percentile(distance , 75)
     data_f['source'] =data_f['region']
-    data_f.to_csv("clean_csv/JAPAN_messy.csv", index=False)
+    data_f.to_csv("clean_csv/JAPAN_DATASET.csv", index=False)
     #مصورسازی نمودارها
 

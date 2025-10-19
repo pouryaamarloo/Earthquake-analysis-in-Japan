@@ -92,12 +92,12 @@ def usgs_clean():
     dist_percentile_3=np.percentile(dist , 75)
     # ذخیره نتایج در فایل جدید
     df['source'] = df['region']
-    df.to_csv("clean_csv/japan_usgs_clean.csv", index=False)
+    df.to_csv("clean_csv/JAPAN_USGS.csv", index=False)
 
     processed_columns= ["time","latitude","longitude","depth","magnitude","Category","region","month","year","distance_to_tokyo","source"]
-    df[processed_columns].to_csv("clean_csv/japan_usgs_clean.csv", index=False, encoding="utf-8-sig")
+    df[processed_columns].to_csv("clean_csv/JAPAN_USGS.csv", index=False, encoding="utf-8-sig")
 
-    test_df=pd.read_csv("clean_csv/japan_usgs_clean.csv")
+    test_df=pd.read_csv("clean_csv/JAPAN_USGS.csv")
     print(test_df.head())
     print(test_df.info())
 

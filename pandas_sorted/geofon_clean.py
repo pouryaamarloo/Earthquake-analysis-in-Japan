@@ -97,7 +97,7 @@ def geofon_clean():
     dist_percentile_2=np.percentile(dist , 50)
     dist_percentile_3=np.percentile(dist , 75)
     df['source'] = df['place']
-    df.to_csv("clean_csv/JAPAN_GEOFON_cleaned.csv", index=False)
+    df.to_csv("clean_csv/JAPAN_GEOFON.csv", index=False)
 
     # محاسبات آماری
     print("Mean of distance :", np.mean(df['distance_to_tokyo']))

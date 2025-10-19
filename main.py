@@ -5,12 +5,12 @@ import pandas as pd
 import glob
 from visualization.visualization import EarthquakeVisualizer
 #
-# def call_scraper():
-#     usgs.earthquake_api()
-#     geofon.geofon()
-#     emsc.emsc()
-#     print("داده ها استخراج شدند")
-# #     return
+def call_scraper():
+    usgs.earthquake_api()
+    geofon.geofon()
+    emsc.emsc()
+    print("داده ها استخراج شدند")
+    return
 def sort_data():
     geofon_clean.geofon_clean()
     japan_messy_earthquakes.japan_messy_earthquakes()
@@ -36,7 +36,7 @@ def database_e(df,csv_name):
 
 
 if __name__ == '__main__':
-    #call_scraper()
+    call_scraper()
     sort_data()
     csv_files = glob.glob("clean_csv/*.csv")
     for file in csv_files:
@@ -45,7 +45,6 @@ if __name__ == '__main__':
             continue
         else :
             database_e(df,file)
-
 
 
 

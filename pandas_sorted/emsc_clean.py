@@ -99,7 +99,7 @@ def emsc_clean():
     dist_percentile_3=np.percentile(dist , 75)
     # ذخیره CSV با جداکننده کاما و encoding مناسب برای Excel
     df['source'] = df['place']
-    df.to_csv("clean_csv/Japan_emsc.csv", )
+    df.to_csv("clean_csv/JAPAN_ESMC.csv", )
     # grouped_month_cat.to_csv("/clean_csv/emsc_month.csv", index=False, sep=',', encoding='utf-8-sig')
     # grouped_region.to_csv("/clean_csv/emsc_region.csv", index=False, sep=',', encoding='utf-8-sig')
     return
