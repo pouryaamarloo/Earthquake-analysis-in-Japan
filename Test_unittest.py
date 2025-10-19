@@ -1,5 +1,6 @@
 import unittest
 import pandas as pd
+from sqlalchemy import create_engine, text
 
 # مسیر فایل‌های CSV
 csv_path = [
@@ -11,7 +12,7 @@ csv_path = [
 
 
 class TestProject(unittest.TestCase):
-# ۱. بررسی صحت دریافت داده‌ها
+# 1. بررسی صحت دریافت داده‌ها
     def test_correct_data(self):
         for c in csv_path:
             df = pd.read_csv(c)
@@ -24,7 +25,7 @@ class TestProject(unittest.TestCase):
             df=pd.read_csv(c)
             missing = [col for col in expected_columns if col not in df.columns]
             self.assertFalse(missing , f"{c} is missing columns:{','.join(missing)}")
-# ۲. بررسی حذف داده‌های ناقص
+# 2. بررسی حذف داده‌های ناقص
     def test_remove_defective(self):
         for c in csv_path:
             df = pd.read_csv(c)
@@ -32,7 +33,7 @@ class TestProject(unittest.TestCase):
                 df.isnull().values.any(),f"there is (NAN) in {c}")
 
     
-# ۳. بررسی نوع داده‌ها
+# 3. بررسی نوع داده‌ها
     def test_data_type(self):
         numeric_columns = ["longitude", "latitude", "depth", "magnitude"]
         for c in csv_path:
@@ -62,6 +63,20 @@ class TestProject(unittest.TestCase):
             self.assertFalse(pd.isna(mean_depth))
             self.assertFalse(pd.isna(std_depth))
             self.assertTrue((df["depth"] >= 0).all())
+# 4. صحت درج داده ها دز پایگاه داده
+    def test_database_check(self):
+
+        engine = create_engine("postgresql+psycopg2://samaneh:123456@localhost:16584/postgres")
+        conn = engine.connect()
+
+        before = conn.execute(text("SELECT COUNT(*) FROM earthquakes")).scalar()
+        conn.execute(text("""INSERT INTO earthquakes (time, longitude, latitude, depth, magnitude, distance_to_tokyo, region, source)
+        VALUES ('2024-10-19 00:00:00', 139.76, 35.68, 10.5, 4.5, 50.0, 'Tokyo', 'test')"""))
+        conn.commit()
+        after = conn.execute(text("SELECT COUNT(*) FROM earthquakes")).scalar()
+        self.assertTrue(after > before, "No new data inserted")
+
+        conn.close()
 
 if __name__ == "__main__":
     unittest.main()
