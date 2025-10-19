@@ -1,32 +1,32 @@
-time,latitude,longitude,depth,magnitude,place,status,notes,Month,Category,region,distance_to_tokyo,source
-2025-09-15 12:45:30.123,38.322,142.369,35.0,5.1,"off east coast of Honshu, Japan",reviewed,,9,Moderate,off east coast of Honshu,3.75472922325965,off east coast of Honshu
-2025-09-17 14:10:05.000,43.0618,141.3545,10.2,4.8,"Hokkaido, Japan region",reviewed,,9,Moderate,Hokkaido,7.557493706911038,Hokkaido
-2025-09-18 23:11:55.000,33.5904,130.4017,12.0,4.9,"Fukuoka, Japan",reviewed,,9,Moderate,Fukuoka,9.524196596563925,Fukuoka
-2025-09-19 05:00:00.000,35.6895,139.6917,999.0,5.5," Tokyo, Japan ",reviewed,Data error?,9,Moderate,Tokyo,0.0,Tokyo
-2025-09-20 14:30:10.789,37.765,140.467,25.0,4.6,Fukushima Prefecture,automatic,,9,Moderate,Fukushima Prefecture,2.215579007844229,Fukushima Prefecture
-2025-09-21 02:15:45.987,34.6937,135.5023,45.1,5.2,osaka,reviewed,,9,Moderate,osaka,4.306122385627243,osaka
-2025-09-22 11:05:21.000,33.8562,132.7653,22.0,4.9,"Shikoku, Japan",reviewed,,9,Moderate,Shikoku,7.1649149227328595,Shikoku
-2025-09-24 09:09:09.090,35.4437,139.638,30.0,5.0,Yokohama,,,9,Moderate,Yokohama,0.25159755563200625,Yokohama
-2025-09-15 12:45:30.123,38.322,142.369,35.0,5.1,"off east coast of Honshu, Japan",reviewed,DUPLICATE,9,Moderate,off east coast of Honshu,3.75472922325965,off east coast of Honshu
-2025-09-26 01:25:33.000,26.2124,127.6809,15.0,4.7,"Okinawa, Ryukyu Islands",reviewed,,9,Moderate,Okinawa,15.299501333376853,Okinawa
-2025-09-27 15:30:00.000,35.6895,139.6917,40.0,5.3,Tokyo Prefecture,reviewed,,9,Moderate,Tokyo Prefecture,0.0,Tokyo Prefecture
-2025-09-28 16:55:41.812,40.822,140.747,60.1,5.0,"near Aomori, Japan",automatic,,9,Moderate,near Aomori,5.239867778866184,near Aomori
-2025-09-30 20:00:50.400,34.3852,132.4553,80.0,5.0,Hiroshima,automatic,,9,Moderate,Hiroshima,7.35300506255776,Hiroshima
-2025-10-01 00:12:34.567,35.0116,135.7681,10.0,4.4,"Kyoto, Japan",reviewed,,10,Moderate,Kyoto,3.981731453777358,Kyoto
-2025-10-01 00:12:34.567,35.0116,135.7681,10.0,4.4,"Kyoto, Japan",reviewed,,10,Moderate,Kyoto,3.981731453777358,Kyoto
-2025-10-02 13:01:02.121,32.7503,129.8779,25.3,4.9,Nagasaki,,Possible error,10,Moderate,Nagasaki,10.24448959587542,Nagasaki
-2025-10-03 21:21:21.212,34.6937,135.5023,129.42413793103447,5.1,Osaka Prefecture,reviewed,,10,Moderate,Osaka Prefecture,4.306122385627243,Osaka Prefecture
-2025-10-04 08:45:15.000,35.1815,136.9066,35.2,4.8,"  Nagoya, Japan  ",automatic,,10,Moderate,Nagoya,2.8310503368891204,Nagoya
-2025-10-05 19:33:00.333,37.25,138.75,10.0,4.6,near Niigata,reviewed,,10,Moderate,near Niigata,1.822624245421965,near Niigata
-2025-10-06 05:15:22.123,36.555,136.661,20.0,4.2,Kanazawa,automatic,,10,Moderate,Kanazawa,3.1518617894825227,Kanazawa
-2025-10-07 11:30:00.000,34.068,131.473,33.0,5.3,Yamaguchi Prefecture,reviewed,Possible magnitude error,10,Moderate,Yamaguchi Prefecture,8.377129098921642,Yamaguchi Prefecture
-2025-10-08 14:20:10.000,31.596,130.554,129.42413793103447,4.7,Kagoshima,reviewed,Depth missing,10,Moderate,Kagoshima,10.012707103476059,Kagoshima
-2025-10-09 09:05:00.000,35.6895,139.6917,2000.0,5.8,"Tokyo, Japan",automatic,Very deep,10,Moderate,Tokyo,0.0,Tokyo
-2025-10-10 01:01:01.000,38.268,140.869,50.0,4.1,"  Sendai, Japan  ",reviewed,Invalid depth,10,Moderate,Sendai,2.834554204808932,Sendai
-2025-10-12 03:45:19.999,43.0618,141.3545,10.2,4.8,"Hokkaido, Japan region",reviewed,DUPLICATE,10,Moderate,Hokkaido,7.557493706911038,Hokkaido
-2025-10-13 12:12:12.121,34.228,134.046,18.0,4.0,Takamatsu,,,10,Moderate,Takamatsu,5.831801671867799,Takamatsu
-2025-10-14 22:30:00.000,35.4437,139.638,30.0,5.0,Yokohama,,DUPLICATE,10,Moderate,Yokohama,0.25159755563200625,Yokohama
-2025-10-15 07:20:45.000,33.249,131.609,10.0,4.3,Oita Prefecture,automatic,,10,Moderate,Oita Prefecture,8.443108405083985,Oita Prefecture
-2025-10-16 15:00:18.200,35.68,139.75,33.0,5.0,central tokyo,automatic,,10,Moderate,central tokyo,0.05906894277029482,central tokyo
-2025-10-18 23:59:59.999,26.2124,127.6809,15.0,4.7,"Okinawa, Ryukyu Islands",reviewed,Possible Duplicate,10,Moderate,Okinawa,15.299501333376853,Okinawa
-2025-10-19 04:40:04.400,35.1815,136.9066,35.2,4.8,"  Nagoya, Japan  ",automatic,Check quotes,10,Moderate,Nagoya,2.8310503368891204,Nagoya
+time,latitude,longitude,depth,magnitude,place,Month,Category,region,distance_to_tokyo,source
+2025-09-15 12:45:30.123,38.322,142.369,35.0,5.1,"off east coast of Honshu, Japan",9,Moderate,off east coast of Honshu,3.75472922325965,off east coast of Honshu
+2025-09-17 14:10:05.000,43.0618,141.3545,10.2,4.8,"Hokkaido, Japan region",9,Moderate,Hokkaido,7.557493706911038,Hokkaido
+2025-09-18 23:11:55.000,33.5904,130.4017,12.0,4.9,"Fukuoka, Japan",9,Moderate,Fukuoka,9.524196596563925,Fukuoka
+2025-09-19 05:00:00.000,35.6895,139.6917,999.0,5.5," Tokyo, Japan ",9,Moderate,Tokyo,0.0,Tokyo
+2025-09-20 14:30:10.789,37.765,140.467,25.0,4.6,Fukushima Prefecture,9,Moderate,Fukushima Prefecture,2.215579007844229,Fukushima Prefecture
+2025-09-21 02:15:45.987,34.6937,135.5023,45.1,5.2,osaka,9,Moderate,osaka,4.306122385627243,osaka
+2025-09-22 11:05:21.000,33.8562,132.7653,22.0,4.9,"Shikoku, Japan",9,Moderate,Shikoku,7.1649149227328595,Shikoku
+2025-09-24 09:09:09.090,35.4437,139.638,30.0,5.0,Yokohama,9,Moderate,Yokohama,0.25159755563200625,Yokohama
+2025-09-15 12:45:30.123,38.322,142.369,35.0,5.1,"off east coast of Honshu, Japan",9,Moderate,off east coast of Honshu,3.75472922325965,off east coast of Honshu
+2025-09-26 01:25:33.000,26.2124,127.6809,15.0,4.7,"Okinawa, Ryukyu Islands",9,Moderate,Okinawa,15.299501333376853,Okinawa
+2025-09-27 15:30:00.000,35.6895,139.6917,40.0,5.3,Tokyo Prefecture,9,Moderate,Tokyo Prefecture,0.0,Tokyo Prefecture
+2025-09-28 16:55:41.812,40.822,140.747,60.1,5.0,"near Aomori, Japan",9,Moderate,near Aomori,5.239867778866184,near Aomori
+2025-09-30 20:00:50.400,34.3852,132.4553,80.0,5.0,Hiroshima,9,Moderate,Hiroshima,7.35300506255776,Hiroshima
+2025-10-01 00:12:34.567,35.0116,135.7681,10.0,4.4,"Kyoto, Japan",10,Moderate,Kyoto,3.981731453777358,Kyoto
+2025-10-01 00:12:34.567,35.0116,135.7681,10.0,4.4,"Kyoto, Japan",10,Moderate,Kyoto,3.981731453777358,Kyoto
+2025-10-02 13:01:02.121,32.7503,129.8779,25.3,4.9,Nagasaki,10,Moderate,Nagasaki,10.24448959587542,Nagasaki
+2025-10-03 21:21:21.212,34.6937,135.5023,129.42413793103447,5.1,Osaka Prefecture,10,Moderate,Osaka Prefecture,4.306122385627243,Osaka Prefecture
+2025-10-04 08:45:15.000,35.1815,136.9066,35.2,4.8,"  Nagoya, Japan  ",10,Moderate,Nagoya,2.8310503368891204,Nagoya
+2025-10-05 19:33:00.333,37.25,138.75,10.0,4.6,near Niigata,10,Moderate,near Niigata,1.822624245421965,near Niigata
+2025-10-06 05:15:22.123,36.555,136.661,20.0,4.2,Kanazawa,10,Moderate,Kanazawa,3.1518617894825227,Kanazawa
+2025-10-07 11:30:00.000,34.068,131.473,33.0,5.3,Yamaguchi Prefecture,10,Moderate,Yamaguchi Prefecture,8.377129098921642,Yamaguchi Prefecture
+2025-10-08 14:20:10.000,31.596,130.554,129.42413793103447,4.7,Kagoshima,10,Moderate,Kagoshima,10.012707103476059,Kagoshima
+2025-10-09 09:05:00.000,35.6895,139.6917,2000.0,5.8,"Tokyo, Japan",10,Moderate,Tokyo,0.0,Tokyo
+2025-10-10 01:01:01.000,38.268,140.869,50.0,4.1,"  Sendai, Japan  ",10,Moderate,Sendai,2.834554204808932,Sendai
+2025-10-12 03:45:19.999,43.0618,141.3545,10.2,4.8,"Hokkaido, Japan region",10,Moderate,Hokkaido,7.557493706911038,Hokkaido
+2025-10-13 12:12:12.121,34.228,134.046,18.0,4.0,Takamatsu,10,Moderate,Takamatsu,5.831801671867799,Takamatsu
+2025-10-14 22:30:00.000,35.4437,139.638,30.0,5.0,Yokohama,10,Moderate,Yokohama,0.25159755563200625,Yokohama
+2025-10-15 07:20:45.000,33.249,131.609,10.0,4.3,Oita Prefecture,10,Moderate,Oita Prefecture,8.443108405083985,Oita Prefecture
+2025-10-16 15:00:18.200,35.68,139.75,33.0,5.0,central tokyo,10,Moderate,central tokyo,0.05906894277029482,central tokyo
+2025-10-18 23:59:59.999,26.2124,127.6809,15.0,4.7,"Okinawa, Ryukyu Islands",10,Moderate,Okinawa,15.299501333376853,Okinawa
+2025-10-19 04:40:04.400,35.1815,136.9066,35.2,4.8,"  Nagoya, Japan  ",10,Moderate,Nagoya,2.8310503368891204,Nagoya

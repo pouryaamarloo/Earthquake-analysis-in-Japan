@@ -36,7 +36,7 @@ def database_e(df,csv_name):
 
 
 if __name__ == '__main__':
-    call_scraper()
+    # call_scraper()
     sort_data()
     csv_files = glob.glob("clean_csv/*.csv")
     for file in csv_files:
